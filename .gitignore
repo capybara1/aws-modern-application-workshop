@@ -132,6 +132,6 @@ dmypy.json
 .pyre/
 
 # Terraform
-.terraform/
+**/.terraform/
 *.tfstate
-*.backup
+*.tfstate.*
