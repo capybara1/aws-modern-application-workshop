@@ -5,9 +5,13 @@ provider "aws" {
 
 data "aws_caller_identity" "current" {}
 
+locals {
+  static_files_bucket_name = "${data.aws_caller_identity.current.account_id}.mythicalmysfits"
+}
+
 resource "aws_s3_bucket" "static_files" {
-  bucket = "${data.aws_caller_identity.current.account_id}.mythicalmysfits"
-  acl = "public-read"
+  bucket = local.static_files_bucket_name
+  acl    = "public-read"
   policy = <<EOT
 {
   "Id": "MyPolicy",
@@ -18,7 +22,7 @@ resource "aws_s3_bucket" "static_files" {
       "Effect": "Allow",
       "Principal": "*",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${data.aws_caller_identity.current.account_id}.mythicalmysfits/*"
+      "Resource": "arn:aws:s3:::${local.static_files_bucket_name}/*"
     }
   ]
 }
