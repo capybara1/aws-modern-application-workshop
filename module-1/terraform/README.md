@@ -1,13 +1,13 @@
 # Terraform for Module 1
 
-Setup:
+## Setup
 
 ```
 terraform apply
 ./copy_content.sh
 ```
 
-Clean up:
+## Clean up
 
 ```
 ./clear_bucket.sh
