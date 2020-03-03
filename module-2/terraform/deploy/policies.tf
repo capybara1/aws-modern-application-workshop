@@ -1,3 +1,8 @@
+# assume role policies are trust relationship policies attached to
+# a role which behave like resource based policies, thus granting
+# the specific permission to assume this role to the given principal.
+# See also http://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.htm
+
 data "aws_iam_policy_document" "ecs_service_assume_role_policy" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -67,14 +72,4 @@ data "aws_iam_policy_document" "ecs_task_policy" {
     ]
     resources = ["*"]
   }
-#  statement {
-#    effect = "Allow"
-#    actions = [
-#      "dynamodb:Scan",
-#      "dynamodb:Query",
-#      "dynamodb:UpdateItem",
-#      "dynamodb:GetItem",
-#    ]
-#    resources = ["arn:aws:dynamodb:*:*:table/MysfitsTable*"]
-#  }
 }

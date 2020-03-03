@@ -132,6 +132,8 @@ resource "aws_lb_listener" "http" {
   }
 }
 
+# A service linked role is a predefined role with a immutable
+# set of policies. None the less the role requies explicit activation.
 resource "aws_iam_service_linked_role" "service_role" {
   aws_service_name = "ecs.amazonaws.com"
 }
